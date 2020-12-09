@@ -7,26 +7,30 @@ for(let choice of space) {
             //Clic gauche
 
             case 0:
-                if(choice.getElementsByTagName("img").length === 0) {
-                    let rond = document.createElement("img");
-                    rond.src = "rond.jpg";
-                    rond.style.width = "55%";
-                    rond.style.height = "75%";
-                    choice.appendChild(rond);
-                    choice.classList.add("joueurUn");
+                if(player() ==="joueurUn") {
+                    if(choice.getElementsByTagName("img").length === 0) {
+                        let rond = document.createElement("img");
+                        rond.src = "rond.jpg";
+                        rond.style.width = "55%";
+                        rond.style.height = "75%";
+                        choice.appendChild(rond);
+                        choice.classList.add("joueurUn");
+                    }
                 }
                 break;
 
             //Clic droit
 
             case 2:
-                if(choice.getElementsByTagName("img").length === 0) {
-                    let croix = document.createElement("img");
-                    croix.src = "croix.jpg";
-                    croix.style.width = "55%";
-                    croix.style.height = "75%";
-                    choice.appendChild(croix);
-                    choice.classList.add("joueurDeux");
+                if(player() ==="joueurDeux") {
+                    if(choice.getElementsByTagName("img").length === 0) {
+                        let croix = document.createElement("img");
+                        croix.src = "croix.jpg";
+                        croix.style.width = "55%";
+                        croix.style.height = "75%";
+                        choice.appendChild(croix);
+                        choice.classList.add("joueurDeux");
+                    }
                 }
                 break;
         }
@@ -47,6 +51,28 @@ for(let choice of space) {
             }
         }
     });
+}
+
+// Altérnance des joueurs
+
+function player() {
+    let joueur1 = 0;
+    let joueur2 = 0;
+
+    for(let rempli of space) {
+        if(rempli.classList.contains("joueurUn")) {
+            joueur1++;
+        }
+        else if(rempli.classList.contains("joueurDeux")) {
+            joueur2++
+        }
+    }
+    if(joueur1 === joueur2) {
+        return "joueurUn"
+    }
+    else {
+        return "joueurDeux"
+    }
 }
 
 function win() {
