@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+}
+
+h1 {
+    font-size: 4rem;
+    text-decoration-line: underline;
+    font-style: italic;
+    text-align: center;
+    margin-top: 5%;
+}
+
+#container {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5% auto auto;
+}
+
+.cases {
+    width: 33%;
+    border: 1px solid black;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cases:nth-child(1), .cases:nth-child(3), .cases:nth-child(2) {
+    border-top: none;
+}
+
+.cases:nth-child(1), .cases:nth-child(7), .cases:nth-child(4) {
+    border-left: none;
+}
+
+.cases:nth-child(3), .cases:nth-child(9), .cases:nth-child(6){
+    border-right: none;
+}
+
+.cases:nth-child(7), .cases:nth-child(9), .cases:nth-child(8){
+    border-bottom: none;
+}
+
+@media screen and (max-width: 800px){
+    #container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .cases {
+        width: 32.5%;
+    }
+}
