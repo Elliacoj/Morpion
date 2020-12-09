@@ -121,7 +121,7 @@ function player() {
     }
 }
 
-//Condition of victory
+// Condition of victory
 function win() {
     let joueur1 = 0;
     let joueur2 = 0;
