@@ -12,54 +12,43 @@ button.addEventListener("click", function (){
     }
 })
 
+// The game (cases choices)
 for(let choice of space) {
     choice.addEventListener("mouseup", function (event) {
-        if(button.innerHTML === "Joueur") {
-            switch (event.button) {
-
-                case 0:
-                    if(player() ==="joueurUn") {
-                        joueur1(choice);
-                    }
-                    break;
-
-                case 2:
-                    if(player() ==="joueurDeux") {
-                        joueur2(choice);
-                    }
-                    break;
-            }
-
-            let finGame = win();
-            if(finGame !== false) {
-                alert(finGame);
-                del();
-            }
-        }
-
-
-        else if(button.innerHTML === "IA") {
-            switch (event.button) {
-                case 0:
-                    if(player() ==="joueurUn") {
-                        joueur1(choice);
+        switch (event.button) {
+            case 0:
+                if(player() ==="joueurUn") {
+                    joueur1(choice);
+                    //Game with IA
+                    if(button.innerHTML === "IA"){
                         if(player() === "joueurDeux") {
                             if(win() === false) {
                                 random();
                             }
                         }
                     }
-                    let finGame = win();
-                    if(finGame !== false) {
-                        alert(finGame);
-                        del();
+                }
+                break;
+
+            //Game with 2 players
+            case 2:
+                if(button.innerHTML === "Joueur") {
+                    if(player() ==="joueurDeux") {
+                        joueur2(choice);
                     }
                     break;
-            }
+                }
+        }
+
+        let finGame = win();
+        if(finGame !== false) {
+            alert(finGame);
+            del();
         }
     });
 }
 
+// Player 1 circle
 function joueur1(choixUn) {
     if(choixUn.getElementsByTagName("img").length === 0) {
         let rond = document.createElement("img");
@@ -71,6 +60,7 @@ function joueur1(choixUn) {
     }
 }
 
+// Player 2 cross
 function joueur2(choixDeux) {
     if(choixDeux.getElementsByTagName("img").length === 0) {
         let croix = document.createElement("img");
@@ -82,6 +72,7 @@ function joueur2(choixDeux) {
     }
 }
 
+// IA player
 function random() {
     let ia = Math.trunc((Math.random() * 10) - 1);
     if(space[ia].getElementsByTagName("img").length !== 0){
@@ -105,7 +96,6 @@ function del() {
         if(imgs.length > 0) {
             imgs[0].remove();
         }
-
         del++;
     }
 }
@@ -131,6 +121,7 @@ function player() {
     }
 }
 
+//Condition of victory
 function win() {
     let joueur1 = 0;
     let joueur2 = 0;
