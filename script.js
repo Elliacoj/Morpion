@@ -10,7 +10,7 @@ for(let choice of space) {
                 if(player() ==="joueurUn") {
                     if(choice.getElementsByTagName("img").length === 0) {
                         let rond = document.createElement("img");
-                        rond.src = "rond.jpg";
+                        rond.src = "cercle.jpg";
                         rond.style.width = "55%";
                         rond.style.height = "75%";
                         choice.appendChild(rond);
